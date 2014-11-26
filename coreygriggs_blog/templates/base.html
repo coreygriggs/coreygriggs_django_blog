@@ -1,0 +1,18 @@
+{% load url from future %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+
+<div class="container-fluid">
+{% block bootstrap3_content %}
+     <nav>
+         <ul class="nav navbar-right nav-pills">
+              <li><a href="{% url 'home' %}" class="btn">Home</a></li>
+              <li><a href="{% url 'blog' %}">Blog</a></li>
+              <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+      </nav>
+            {% bootstrap_messages %}
+{% endblock %}
+</div>

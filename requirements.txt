@@ -1,0 +1,4 @@
+Django==1.7.1
+django-bootstrap3==5.0.2
+django-simple-menu==1.0.9
+psycopg2==2.5.4
