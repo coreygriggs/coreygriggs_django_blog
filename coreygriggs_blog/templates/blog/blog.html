@@ -1,15 +1,6 @@
 {% extends 'base.html' %}
 {% block bootstrap3_content %}
-    <div class="container-fluid">
-         <nav>
-             <ul class="nav navbar-right nav-pills col-xs-3">
-                  <li><a href="{% url 'home' %}" class="navbar-btn">Home</a></li>
-                  <li><a href="{% url 'blog' %}" class="navbar-btn">Blog</a></li>
-                  <li><a href="{% url 'contact' %}" class="navbar-btn">Contact</a></li>
-              </ul>
-          </nav>
-    </div>
-    {% block content %}
+    <div class="container">
     <h1>Corey Griggs Blog Archive</h1>
     {% for post in posts %}
         <div class="post">
@@ -23,7 +14,7 @@
                 <time datetime="{{ post.created|date:"c" }}"></time>
                 {{post.created|date}}
             </p>
-    </div>
+        </div>
     {% endfor %}
-    {% endblock %}
+    </div>
 {% endblock %}
