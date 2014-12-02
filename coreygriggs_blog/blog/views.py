@@ -9,7 +9,7 @@ def index(request):
 
 def blog(request):
 	posts = Post.objects.filter(published=True)
-	return render(request, 'blog/blog.html', {'posts': posts})
+	return render(request, 'blog/blog.html', {'posts': posts}, context_instance=RequestContext(request))
 
 def post(request, slug):
 	post = get_object_or_404(Post, slug=slug)

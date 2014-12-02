@@ -3,16 +3,14 @@
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-
-<div class="container-fluid">
 {% block bootstrap3_content %}
+<div class="container-fluid">
      <nav>
-         <ul class="nav navbar-right nav-pills">
-              <li><a href="{% url 'home' %}" class="btn">Home</a></li>
-              <li><a href="{% url 'blog' %}">Blog</a></li>
-              <li><a href="{% url 'contact' %}">Contact</a></li>
+         <ul class="nav navbar-right nav-pills col-xs-3">
+              <li><a href="{% url 'home' %}" class="navbar-btn">Home</a></li>
+              <li><a href="{% url 'blog' %}" class="navbar-btn">Blog</a></li>
+              <li><a href="{% url 'contact' %}" class="navbar-btn">Contact</a></li>
           </ul>
       </nav>
-            {% bootstrap_messages %}
-{% endblock %}
 </div>
+{% endblock %}

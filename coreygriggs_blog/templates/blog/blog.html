@@ -1,21 +1,29 @@
 {% extends 'base.html' %}
-
-{% block title %}Blog Archive{% endblock %}
-
 {% block bootstrap3_content %}
+    <div class="container-fluid">
+         <nav>
+             <ul class="nav navbar-right nav-pills col-xs-3">
+                  <li><a href="{% url 'home' %}" class="navbar-btn">Home</a></li>
+                  <li><a href="{% url 'blog' %}" class="navbar-btn">Blog</a></li>
+                  <li><a href="{% url 'contact' %}" class="navbar-btn">Contact</a></li>
+              </ul>
+          </nav>
+    </div>
+    {% block content %}
     <h1>Corey Griggs Blog Archive</h1>
     {% for post in posts %}
-    <div class="post">
-        <h2>
-            <a href="{{ post.get_absolute_url }}">
-                {{ post.title }}
-            </a>
-        </h2>
-        <p>{{ post.description }}</p>
-        <p> Posted on
-            <time datetime="{{ post.created|date:"c" }}"></time>
-            {{post.created|date}}
-        </p>
+        <div class="post">
+            <h2>
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+            <p>{{ post.description }}</p>
+            <p> Posted on
+                <time datetime="{{ post.created|date:"c" }}"></time>
+                {{post.created|date}}
+            </p>
     </div>
     {% endfor %}
+    {% endblock %}
 {% endblock %}
