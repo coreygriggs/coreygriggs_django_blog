@@ -3,15 +3,6 @@
 
 {% block bootstrap3_content %}
     <div class="container">
-        <div class="container-fluid">
-             <nav>
-                 <ul class="nav navbar-right nav-pills col-xs-3">
-                      <li><a href="{% url 'home' %}" class="navbar-btn">Home</a></li>
-                      <li><a href="{% url 'blog' %}" class="navbar-btn">Blog</a></li>
-                      <li><a href="{% url 'contact' %}" class="navbar-btn">Contact</a></li>
-                  </ul>
-              </nav>
-        </div>
         <article>
             <header>
                 <h1>{{ post.title }}</h1>

@@ -1,8 +1,6 @@
 from django.contrib import admin
-from blog.models import Post
+from .models import Post, Headline
 
-# Register your models here.
-#admin.site.register(Post)
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'description']
@@ -10,6 +8,14 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'description', 'content']
     date_hierarchy = 'created'
     save_on_top = True
-    prepopulated_fields = {"slug": ("title",)}
+
+
+class HeadLineAdmin(admin.ModelAdmin):
+    list_display = ['headline']
+    list_filter = ['created', 'is_current']
+    date_hierarchy = 'created'
+    save_on_top = True
+
 
 admin.site.register(Post, PostAdmin)
+admin.site.register(Headline, HeadLineAdmin)
