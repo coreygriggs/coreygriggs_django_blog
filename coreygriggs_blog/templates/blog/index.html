@@ -3,7 +3,10 @@
 {% block bootstrap3_content %}
     <div class="container">
     <h1>{{ headline.headline }}</h1>
-    <p></p>
+    <div>
+        <h2>Hello!</h2>
+        <p class="lead">Thanks for dropping in! I'm Corey Griggs, and I'm a developer, QA engineer, project manager, and occasionally have an idea or two myself.</p>
+    </div>
     <h2><a href="{% url 'blog' %}">Blog Entries</a></h2>
     {% for post in posts %}
         <div class="post">

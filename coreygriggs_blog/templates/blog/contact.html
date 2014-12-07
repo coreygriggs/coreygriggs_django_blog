@@ -1,6 +1,16 @@
 {% extends 'base.html' %}
+{% load bootstrap %}
 {% block bootstrap3_content %}
     <div class="container">
-    <p>this will be a contact page</p>
+        <h1>Contact me</h1>
+        {% if form.errors %}
+            <p style="color: red;">
+                Please correct the error{{ form.errors|pluralize }} below.
+            </p>
+        {% endif %}
+        <form action="" method="post">
+            {{ form|bootstrap }}
+            <input class="btn" type="submit" value="Send">
+        </form>
     </div>
 {% endblock %}

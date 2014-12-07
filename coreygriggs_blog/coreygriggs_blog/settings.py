@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'blog',
     'bootstrap3',
+    'bootstrapform',
 )
 
 MIDDLEWARE_CLASSES = (

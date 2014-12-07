@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Headline
+from .forms import ContactForm
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.mail import send_mail
 
 
 def index(request):
@@ -20,4 +23,20 @@ def post(request, slug):
 
 
 def contact(request):
-	return render(request, 'blog/contact.html')
+	if request.method == 'POST':
+		form = ContactForm(request.POST)
+		if form.is_valid():
+			data = form.cleaned_data
+			send_mail(
+				data['subject'],
+			    data['message'],
+			    data.get('email', 'noreply@example.com'),
+			    ['siteowner@example.com'],
+
+			)
+			return HttpResponseRedirect('/contact/thanks/')
+	else:
+		form = ContactForm(
+			initial={'subject': 'I want to hire you!'}
+		)
+	return render(request, 'blog/contact.html', {'form': form})
