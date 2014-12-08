@@ -1,16 +1,16 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Post, Headline
+from .models import Post, Headline, ContactFormRequests
 from .forms import ContactForm
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from django.core.mail import send_mail
 
 
 def index(request):
 	posts = Post.objects.filter(published=True).all()[:3]
 	if len(posts) > 0:
 		headline = get_object_or_404(Headline)
-		return render(request, 'blog/index.html', {'headline': headline, 'posts': posts}, context_instance=RequestContext(request))
+		return render(request, 'blog/index.html', {'headline': headline, 'posts': posts},
+		              context_instance=RequestContext(request))
 	else:
 		return render(request, 'blog/index.html')
 
@@ -30,16 +30,15 @@ def contact(request):
 		form = ContactForm(request.POST)
 		if form.is_valid():
 			data = form.cleaned_data
-			send_mail(
-				data['subject'],
-			    data['message'],
-			    data.get('email', 'noreply@example.com'),
-			    ['siteowner@example.com'],
-
-			)
+			ContactFormRequests.objects.create(subject=data['subject'], email=data['email'],
+			                                   message=data['message'])
 			return HttpResponseRedirect('/contact/thanks/')
 	else:
 		form = ContactForm(
 			initial={'subject': 'I want to hire you!'}
 		)
-	return render(request, 'blog/contact.html', {'form': form})
+	return render(request, 'blog/contact.html', {'form': form}, context_instance=RequestContext(request))
+
+
+def thanks(request):
+	return render(request, 'blog/thanks.html')

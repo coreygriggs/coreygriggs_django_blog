@@ -30,3 +30,16 @@ class Headline(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.headline
+
+
+class ContactFormRequests(models.Model):
+    email = models.EmailField(max_length=100, unique=False)
+    subject = models.CharField(max_length=200, unique=False)
+    created = models.DateTimeField(auto_now_add=True)
+    message = models.CharField(max_length=500, unique=False)
+
+    class Meta:
+        ordering = ['-created']
+
+    def __unicode__(self):
+        return u'%s' % self.subject

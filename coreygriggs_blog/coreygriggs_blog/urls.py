@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^blog/$', 'blog.views.blog', name='blog'),
     url(r'^contact/$', 'blog.views.contact', name='contact'),
+    url(r'^contact/thanks/$', 'blog.views.thanks', name='thanks'),
     url(r'^$', 'blog.views.index', name='home'),
     url(r'^blog/(?P<slug>[\w\-]+)/$', 'blog.views.post'),
 )

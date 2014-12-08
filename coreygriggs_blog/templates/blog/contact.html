@@ -8,9 +8,12 @@
                 Please correct the error{{ form.errors|pluralize }} below.
             </p>
         {% endif %}
+    <div class="contact_form">
         <form action="" method="post">
             {{ form|bootstrap }}
             <input class="btn" type="submit" value="Send">
+            {% csrf_token %}
         </form>
+    </div>
     </div>
 {% endblock %}

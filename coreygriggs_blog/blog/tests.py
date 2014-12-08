@@ -34,6 +34,10 @@ class ViewsResponseTest(TestCase):
 		response = self.client.get('/blog')
 		self.assertEqual(response.status_code, 301)
 
+	def test_contact_thanks(self):
+		response = self.client.get('/contact/thanks/')
+		self.assertEqual(response.status_code, 200)
+
 	def test_nonexistent_path(self):
 		response = self.client.get('/fakepath')
 		self.assertEqual(response.status_code, 404)
