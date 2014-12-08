@@ -18,3 +18,22 @@ class CreatePostTest(TestCase):
 		post = Post.objects.get(title='testtesttest', slug='test_slug', description='blablablablbablah',
 		            content='this is some test content')
 		self.assertIsNotNone(post.published)
+
+
+class ViewsResponseTest(TestCase):
+
+	def test_index(self):
+		response = self.client.get('/')
+		self.assertEqual(response.status_code, 200)
+
+	def test_contact(self):
+		response = self.client.get('/contact')
+		self.assertEqual(response.status_code, 301)
+
+	def test_blog(self):
+		response = self.client.get('/blog')
+		self.assertEqual(response.status_code, 301)
+
+	def test_nonexistent_path(self):
+		response = self.client.get('/fakepath')
+		self.assertEqual(response.status_code, 404)

@@ -8,8 +8,11 @@ from django.core.mail import send_mail
 
 def index(request):
 	posts = Post.objects.filter(published=True).all()[:3]
-	headline = get_object_or_404(Headline)
-	return render(request, 'blog/index.html', {'headline': headline, 'posts': posts}, context_instance=RequestContext(request))
+	if len(posts) > 0:
+		headline = get_object_or_404(Headline)
+		return render(request, 'blog/index.html', {'headline': headline, 'posts': posts}, context_instance=RequestContext(request))
+	else:
+		return render(request, 'blog/index.html')
 
 
 def blog(request):
